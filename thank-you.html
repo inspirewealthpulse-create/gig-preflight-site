@@ -1,64 +1,79 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Thanks for your purchase — Gig Preflight</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#0b1220;--card:#0f1b31;--muted:#93a4bf;--line:#203052;--accent:#06b6d4;--accent2:#6366f1;--text:#d7e1ec}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto}
-.container{max-width:760px;margin:0 auto;padding:28px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
-h1{margin:0 0 8px;font-size:32px}
-.muted{color:var(--muted)}
-.row{display:flex;gap:10px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:#0d1830;color:var(--text);text-decoration:none}
-.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1220;border:none;font-weight:600}
-.badge{display:inline-block;padding:4px 8px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:var(--muted)}
-.list{margin:10px 0 0;padding:0 0 0 18px}
-footer{border-top:1px solid var(--line);margin-top:28px;padding:16px 0;color:var(--muted)}
-code{background:#0b162e;border:1px solid var(--line);padding:2px 6px;border-radius:8px}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thanks for your purchase — Gig Preflight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1b31;
+      --muted:#93a4bf;
+      --line:#203052;
+      --accent:#06b6d4;
+      --accent2:#6366f1;
+      --text:#d7e1ec;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto}
+    .container{max-width:760px;margin:0 auto;padding:28px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+    h1{margin:0 0 8px;font-size:32px}
+    .muted{color:var(--muted)}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:#0d1830;color:var(--text);text-decoration:none}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1220;border:none;font-weight:600}
+    .badge{display:inline-block;padding:4px 8px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:var(--muted)}
+    .list{margin:10px 0 0;padding:0 0 0 18px}
+    footer{border-top:1px solid var(--line);margin-top:28px;padding:16px 0;color:var(--muted)}
+    code{background:#0b162e;border:1px solid var(--line);padding:2px 6px;border-radius:8px}
+  </style>
 </head>
 <body>
-<main class="container">
-<div class="card">
-<div class="badge" id="tierBadge">Order</div>
-<h1>Thank you for your purchase!</h1>
-<p class="muted" id="summary">We’ve emailed your receipt. Your build download will appear here as soon as it’s ready.</p>
-<div style="margin:12px 0 6px">What happens next</div>
-<ol class="list">
-<li>We’ll send the <strong>macOS installer (DMG)</strong> to your email on file.</li>
-<li>You’ll also get an email with your <strong>purchase details</strong> and update notes.</li>
-<li>If you don’t see our message in a few minutes, check spam or contact support.</li>
-</ol>
-<div class="row" style="margin-top:14px">
-<a class="btn" href="/">Back to site</a>
-<a class="btn primary" href="mailto:support@gigpreflight.com?subject=Order%20help">Contact support</a>
-</div>
-<p class="muted" style="margin-top:16px">Order reference: <code id="ref">loading…</code></p>
-</div>
-<footer>
-© 2025 Gig Preflight — Built by DJs for DJs
-</footer>
-</main>
-<script>
-// Show tier and a lightweight reference using query params from Stripe Payment Links redirect
-const p = new URLSearchParams(location.search);
-const tier = p.get('tier');
-const ref = p.get('ref') || p.get('session_id') || '';
-const badge = document.getElementById('tierBadge');
-const summary = document.getElementById('summary');
-const refEl = document.getElementById('ref');
-if(tier){ badge.textContent = tier === 'pro' ? 'Pro (Metadata Doctor)' : 'Basic'; }
-if(ref){ refEl.textContent = ref; } else { refEl.textContent = 'available on your Stripe receipt'; }
-if(tier === 'pro'){
-summary.textContent = 'We’ve emailed your receipt for Pro. Your Pro build download will appear here as soon as it’s ready.';
-}
-</script>
+  <main class="container">
+    <div class="card">
+      <div class="badge" id="tierBadge">Order</div>
+      <h1>Thank you for your purchase!</h1>
+      <p class="muted" id="summary">We've sent your license key and download link to your email. Please check your inbox (and spam) for a message from support@gigpreflight.com.</p>
+      <div style="margin:12px 0 6px">What happens next</div>
+      <ol class="list">
+        <li>Download the installer using the link we emailed you.</li>
+        <li>Enter your license key during installation or on first launch.</li>
+        <li>If you don’t see our message, check spam or contact support.</li>
+      </ol>
+      <div class="row" style="margin-top:14px">
+        <a class="btn" href="/">Back to site</a>
+        <a class="btn primary" href="mailto:support@gigpreflight.com?subject=Order%20help">Contact support</a>
+      </div>
+      <p class="muted" style="margin-top:16px">Order reference: <code id="ref">loading…</code></p>
+    </div>
+    <footer>
+      © 2025 Gig Preflight — Built by DJs for DJs
+    </footer>
+  </main>
+  <script>
+    // Update badge, summary, and reference using query parameters from Stripe redirect
+    const p = new URLSearchParams(location.search);
+    const tier = p.get('tier');
+    const ref = p.get('ref') || p.get('session_id') || '';
+    const badge = document.getElementById('tierBadge');
+    const summary = document.getElementById('summary');
+    const refEl = document.getElementById('ref');
+    if(tier){
+      badge.textContent = tier === 'pro' ? 'Pro (Metadata Doctor)' : 'Basic';
+    }
+    if(ref){
+      refEl.textContent = ref;
+    } else {
+      refEl.textContent = 'available on your Stripe receipt';
+    }
+    // Customise summary for Pro tier
+    if(tier === 'pro'){
+      summary.textContent = 'We’ve sent your Pro license and download link to your email. Use them to install and activate the app.';
+    }
+  </script>
 </body>
 </html>
