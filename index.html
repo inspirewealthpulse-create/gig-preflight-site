@@ -80,71 +80,44 @@
       <div>
         <div class="card">
           <div class="pill">Preflight Report Preview</div>
-          <img src="https://dummyimage.com/980x560/0f1b31/93a4bf&text=Traffic+Light+Summary+%7C+USB+%7C+Files+%7C+Metadata" alt="Report preview" style="width:100%;border-radius:12px;margin-top:10px;border:1px solid var(--line)"/>
-          <div class="note" style="margin-top:8px">The app benchmarks your drive, finds duplicates and unsupported files, and suggests metadata fixes for messy tracks.</div>
+          <img src="https://dummyimage.com/980x560/0f1b31/93a4bf&text=Traffic+Light+Summary+%7C+USB+%7C+Files+%7C+Metadata" alt="Report preview" style="width:100%;border-radius:12px;" />
         </div>
       </div>
     </section>
 
-    <section id="how" class="features">
-      <div class="card feat">
-        <div class="pill">Step 1</div>
-        <h3>Scan your USB or music folder</h3>
-        <p class="muted">We check filesystem, speed, free space, and walk your library fast—even on big collections.</p>
-      </div>
-      <div class="card feat">
-        <div class="pill">Step 2</div>
-        <h3>Catch duplicates & unsupported formats</h3>
-        <p class="muted">Duplicates are detected by content hash; FLAC/other warnings match real‑world deck support.</p>
-      </div>
-      <div class="card feat">
-        <div class="pill">Step 3</div>
-        <h3>Fix messy metadata (Pro)</h3>
-        <p class="muted">Audio fingerprinting fills missing Artist/Title/Album and fetches artwork. Approve changes before writing.</p>
-      </div>
-      <div class="card feat">
-        <div class="pill">Step 4</div>
-        <h3>Export a clean gig report</h3>
-        <p class="muted">One click to PDF/HTML with traffic‑light status, so you roll in calm and ready.</p>
-      </div>
-    </section>
-
-    <section id="pricing" style="margin-top:26px">
-      <h2>Simple, one‑time pricing</h2>
-      <div class="pricing">
-        <div class="price">
-          <h4>Basic</h4>
-          <div class="big">$19</div>
-          <ul class="list">
-            <li><span class="dot"></span> USB format & speed test</li>
-            <li><span class="dot"></span> Duplicate & unsupported scan</li>
-            <li><span class="dot"></span> Gig report export</li>
-          </ul>
-          <div style="margin-top:12px">
-            <button class="btn" onclick="checkout('basic')">Buy Basic</button>
-          </div>
-        </div>
-        <div class="price hot">
-          <h4>Pro (Metadata Doctor)</h4>
-          <div class="big">$49</div>
-          <ul class="list">
-            <li><span class="dot"></span> Everything in Basic</li>
-            <li><span class="dot"></span> Auto‑fill Artist/Title/Album</li>
-            <li><span class="dot"></span> Artwork + BPM/Key analysis</li>
-            <li><span class="dot"></span> Approve & apply changes safely</li>
-          </ul>
-          <div style="margin-top:12px">
-            <button class="btn primary" onclick="checkout('pro')">Buy Pro</button>
-          </div>
+    <section id="pricing" class="pricing" style="margin-top:26px">
+      <div class="price">
+        <h4>Basic</h4>
+        <div class="big">$19</div>
+        <ul class="list">
+          <li><span class="dot"></span> USB format & speed check</li>
+          <li><span class="dot"></span> Duplicate & unsupported scan</li>
+          <li><span class="dot"></span> Gig report export</li>
+        </ul>
+        <div style="margin-top:12px">
+          <button class="btn" onclick="checkout('basic')">Buy Basic</button>
         </div>
       </div>
-      <p class="note">Launch promo: we’ll send early‑bird coupons to the waitlist.</p>
-      <div class="inline-form">
-        <input id="email" type="email" placeholder="Enter email for early access & coupon" />
-        <button class="btn" onclick="joinWaitlist()">Join Waitlist</button>
+      <div class="price hot">
+        <h4>Pro (Metadata Doctor)</h4>
+        <div class="big">$49</div>
+        <ul class="list">
+          <li><span class="dot"></span> Everything in Basic</li>
+          <li><span class="dot"></span> Auto‑fill Artist/Title/Album</li>
+          <li><span class="dot"></span> Artwork + BPM/Key analysis</li>
+          <li><span class="dot"></span> Approve & apply changes safely</li>
+        </ul>
+        <div style="margin-top:12px">
+          <button class="btn primary" onclick="checkout('pro')">Buy Pro</button>
+        </div>
       </div>
-      <div id="wlMsg" class="note" style="margin-top:8px"></div>
     </section>
+    <p class="note">Launch promo: we’ll send early‑bird coupons to the waitlist.</p>
+    <div class="inline-form">
+      <input id="email" type="email" placeholder="Enter email for early access & coupon" />
+      <button class="btn" onclick="joinWaitlist()">Join Waitlist</button>
+    </div>
+    <div id="wlMsg" class="note" style="margin-top:8px"></div>
 
     <section id="faq" class="faq" style="margin-top:26px">
       <h2>FAQ</h2>
@@ -163,40 +136,52 @@
 
   <footer>
     <div class="container row">
-      <div class="note">© 2025 Gig Preflight • <a href="#" class="note">Privacy</a> • <a href="#" class="note">Terms</a></div>
+      <div class="note">© 2025 Gig Preflight • <a href="privacy.html" class="note">Privacy</a> • <a href="terms.html" class="note">Terms</a></div>
       <div class="note">Built by DJs for DJs.</div>
     </div>
   </footer>
 
   <script>
-    // Replace these with real Stripe Checkout URLs when available
+    // Stripe Checkout URLs
     const STRIPE = {
-  basic: 'https://buy.stripe.com/7sY3cv2F07BDgdD3JK2Ji00',
-  pro:   'https://buy.stripe.com/dRm4gz2F0f450eF8002Ji01'
-};
-    
-    function checkout(tier){
-      if(!STRIPE[tier] || STRIPE[tier] === '#'){
-        alert('Checkout isn\'t live yet. Join the waitlist and we\'ll send your coupon + download first.');
+      basic: 'https://buy.stripe.com/7sY3cv2F07BDgdD3JK2Ji00',
+      pro:   'https://buy.stripe.com/dRm4gz2F0f450eF8002Ji01'
+    };
+
+    function checkout(tier) {
+      const url = STRIPE[tier];
+      if (!url || url === '#') {
+        alert("Checkout isn't live yet. Join the waitlist and we'll send your coupon + download first.");
         document.getElementById('email').focus();
         return;
       }
-      location.href = STRIPE[tier];
+      location.href = url;
     }
-    function joinWaitlist(){
+
+    async function joinWaitlist() {
       const el = document.getElementById('email');
-      const v = (el.value||'').trim();
+      const v = (el.value || '').trim();
       const m = document.getElementById('wlMsg');
-      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){ m.textContent = 'Enter a valid email.'; return; }
-      try{
-        const list = JSON.parse(localStorage.getItem('gp_waitlist')||'[]');
-        if(!list.includes(v)) list.push(v);
-        localStorage.setItem('gp_waitlist', JSON.stringify(list));
-        m.textContent = 'Added! We\'ll email you the early build + coupon.';
-        el.value='';
-coconst STRIPE = {
-
-  basic  basic: 'https://buy.stripe.com/7sY3cv2F07BDgdD3JK2Ji00',
-  pro:   'https://buy.stripe.com/dRm4gz2F0f450eF8002Ji01'
-
-    };
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){
+        m.textContent = 'Enter a valid email.';
+        return;
+      }
+      try {
+        const res = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: v })
+        });
+        if (res.ok) {
+          m.textContent = 'Added! We\'ll email you the early build + coupon.';
+          el.value = '';
+        } else {
+          m.textContent = 'Something went wrong. Please try again later.';
+        }
+      } catch (err) {
+        m.textContent = 'Error. Please try again later.';
+      }
+    }
+  </script>
+</body>
+</html>
