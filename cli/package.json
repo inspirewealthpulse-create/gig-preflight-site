@@ -1,0 +1,16 @@
+{
+  "name": "gig-preflight-cli",
+  "version": "0.1.0",
+  "description": "CLI tool to scan DJ libraries, detect duplicates and unsupported formats, and suggest metadata fixes via AcoustID.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "bin": {
+    "gig-preflight": "./index.js"
+  },
+  "dependencies": {
+    "music-metadata": "^10.6.1"
+  }
+}
