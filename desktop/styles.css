@@ -48,3 +48,24 @@ pre {
   overflow: auto;
   white-space: pre-wrap;
 }
+
+
+/* Additional styling for desktop app */
+.tagline {
+  text-align: center;
+  font-size: 1.1em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.instructions {
+  margin-bottom: 20px;
+  line-height: 1.4;
+  color: #555;
+}
+
+.progress-message {
+  margin-top: 15px;
+  font-style: italic;
+  color: #0062cc;
+}
