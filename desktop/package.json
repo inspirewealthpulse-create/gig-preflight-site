@@ -1,0 +1,12 @@
+{
+  "name": "gig-preflight-desktop",
+  "version": "1.0.0",
+  "description": "Desktop GUI for Gig Preflight using Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^29.2.0"
+  }
+}
