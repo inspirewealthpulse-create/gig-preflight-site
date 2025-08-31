@@ -1,0 +1,36 @@
+name: Build & Release CLI Zip
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag (e.g., v1.0.0)"
+        required: false
+        default: "v1.0.0"
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Create a zip of the CLI folder
+      - name: Create CLI zip
+        run: |
+          mkdir -p release
+          cp -r cli release/gig-preflight-cli
+          cd release
+          zip -r updated_cli.zip gig-preflight-cli
+
+      # Create (or update) a GitHub Release and upload the zip
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.tag }}
+          name: Gig Preflight CLI ${{ github.event.inputs.tag }}
+          draft: false
+          prerelease: false
+          files: release/updated_cli.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
