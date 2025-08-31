@@ -7,11 +7,14 @@
 </head>
 <body>
   <div class="container">
-    <h1>Gig Preflight</h1>
-    <label for="license">License Key:</label>
-    <input id="license" type="text" placeholder="Enter your license key">
-    <button id="scan">Select Folder & Scan</button>
-    <pre id="output"></pre>
+   <h1>Gig Preflight</h1>
+  <p class="tagline">Ensure your music library is gig-ready.</p>
+  <p class="instructions">Enter your license key and select a folder or drive to scan for issues and fix metadata.</p>
+  <label for="license">License Key:</label>
+  <input id="license" type="text" placeholder="Enter your license key">
+  <button id="scan">Select Folder &amp; Scan</button>
+  <p id="progress" class="progress-message"></p>
+  <pre id="output"></pre>
   </div>
   <script src="renderer.js"></script>
 </body>
